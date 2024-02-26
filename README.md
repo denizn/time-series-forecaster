@@ -21,7 +21,9 @@ For this, we use a Column Transformer, One Hot Encoder and a pipeline to handle 
 
 #### Part 3: Mass Forecaster
 
-Mass Forecaster tries to find the best combination of parameters for the facebook prophet algorithm, and tries to optimize these by applying these onto multiple subsets of the data via backtesting. This is performed for all Rossman stores in the test dataset at a forecasting horizon of 42 days, which is what the Rossmann needs for their business and for this competition.
+Mass Forecaster attempts to find the best combination of parameters for the facebook prophet algorithm, and the optimal model for each store by applying backtesting forecasts onto multiple subsets of the data. This is performed for all Rossmann stores in the test dataset at a forecasting horizon of 42 days, which is what the Rossmann needs for their business and for this competition.
+
+The parameter grid (or the search space for the models) are as per below:
 
     'changepoint_prior_scale': [0.001, 0.01, 0.1, 0.5],
     'seasonality_prior_scale': [0.01, 0.1, 1.0, 10.0],
