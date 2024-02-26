@@ -29,6 +29,9 @@ The parameter grid (or the search space for the models) are as per below:
     'seasonality_prior_scale': [0.01, 0.1, 1.0, 10.0],
     'seasonality_mode': ['additive','multiplicative']
 
+The methodology used to determine the most optimal forecast is "backtesting cross-validation with refit", and below representation
+in my opinion does a good job of visualizing the process.
+
 ![image](https://github.com/denizn/time-series-forecaster/assets/35758436/5d10f29f-f2b7-404f-8647-e1dc2ecca6f5)
 (Animation from: https://skforecast.org/0.11.0/user_guides/backtesting)
 
