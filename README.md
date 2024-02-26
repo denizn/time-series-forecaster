@@ -32,6 +32,7 @@ Mass Forecaster tries to find the best combination of parameters for the faceboo
 
 # Sample history and 42-day forecast can be seen below:
 ![newplot](https://github.com/denizn/time-series-forecaster/assets/35758436/8d4b592a-a12e-473a-8fd4-2146b0a555bb)
+(Plotly animated html files are available under: reports/figure)
 
 # Backtesting cross validation results
 Cross validation results can be under model/results folder in below form:
