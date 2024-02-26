@@ -47,8 +47,6 @@ def make_dataset(data_folder='../../data') -> tuple[pd.DataFrame,:pd.DataFrame]:
 
     data_train.sort_index(level=[0,1],inplace=True)
     data_test.sort_index(level=[0,1],inplace=True)
-
-    print(f'Make dataset completed!')
     
     data_train.to_parquet(data_folder+'/interim/df_train.parquet')
     data_test.to_parquet(data_folder+'/interim/df_test.parquet')

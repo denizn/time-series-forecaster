@@ -5,6 +5,7 @@ import pandas as pd
 from prophet import Prophet
 from prophet.diagnostics import cross_validation, performance_metrics
 from prophet.plot import plot_plotly, plot_components_plotly
+import pickle
 
 logging.getLogger("prophet").setLevel(logging.ERROR)
 logging.getLogger("cmdstanpy").disabled=True
@@ -17,7 +18,7 @@ param_grid = {
     'seasonality_mode': ['additive','multiplicative']
 }
 
-def time_series_cv(df_train, df_test, param_grid:str):
+def time_series_cv(df_train, df_test, param_grid, include_promo, include_holiday):
     '''
     Performs a grid search hyperparameter optimization over a matrix of parameters
     and backtesting cross-validation with refitting for a single store
@@ -31,8 +32,13 @@ def time_series_cv(df_train, df_test, param_grid:str):
     for params in all_params:
 
         m = Prophet(**params)
-        m.add_regressor('cat__Promo_1.0')
-        # m.add_regressor('cat__SchoolHoliday_1.0')
+
+        if include_promo:
+            m.add_regressor('cat__Promo_1.0')
+
+        if include_holiday:
+            m.add_regressor('cat__SchoolHoliday_1.0')
+
         m.fit(df_train.reset_index())  # Fit model with given params
 
         df_cv = cross_validation(m, initial='730 days', period='90 days', horizon = '42 days')
@@ -53,21 +59,29 @@ def time_series_cv(df_train, df_test, param_grid:str):
 
     return yhat_train, yhat_test, m_best, tuning_results
 
-def mass_forecaster(param_grid, data_folder='../../data', store_count=2):
+def mass_forecaster(param_grid, data_folder='../../data', max_store_count=None, include_promo=True,include_holiday=True):
+    '''
+    Mass forecaster will run the time_series_cv
+    across every store in test dataset if no max_store_count is defined
+    In cases where max_store_count is defined, it will run for the first
+    n stores.
+    '''
 
     df_train = pd.read_parquet(data_folder+'/processed/df_train.parquet')
     df_test = pd.read_parquet(data_folder+'/processed/df_test_X.parquet')
 
     stores = df_test.index.levels[0]
 
-    print(stores[0:store_count])
-
     forecasts = []
     tuning_results = []
 
-    for store in stores[0:store_count]:
-        yhat_train, yhat_test, m_best, tuning_result = time_series_cv(df_train.loc[store], df_test.loc[store], param_grid)
+    for store in stores[0:max_store_count] if max_store_count else stores:
+        yhat_train, yhat_test, m_best, tuning_result = time_series_cv(df_train.loc[store], df_test.loc[store], param_grid, include_promo, include_holiday)
         forecast = pd.concat([yhat_train, yhat_test],axis=0)
+
+        # Save Best Model
+        with open(f'models/saved_models/{str(store)}.pkl', 'wb') as handle:
+            pickle.dump(m_best, handle)
         
         forecast.insert(0,'store',store)
         forecasts.append(forecast)
@@ -75,13 +89,14 @@ def mass_forecaster(param_grid, data_folder='../../data', store_count=2):
         tuning_result.insert(0,'store',store)
         tuning_results.append(tuning_result)
 
+        # Save Figures
         fig = plot_plotly(m_best,forecast)
-        fig.write_html(file='../../reports/figures/'+str(store)+'.html')
+        fig.write_html(file='reports/figures/'+str(store)+'.html')
 
     # Save bulks forecasts and model tuning results
-    pd.concat(forecasts).to_csv('../../models/results/forecasts.csv')
-    pd.concat(tuning_results).to_csv('../../models/results/tunings_results.csv')
+    pd.concat(forecasts).to_csv('models/results/forecasts.csv')
+    pd.concat(tuning_results).to_csv('models/results/tunings_results.csv')
 
 if __name__ == '__main__':
 
-    mass_forecaster(param_grid=param_grid)
+    mass_forecaster(param_grid=param_grid, max_store_count=10)
