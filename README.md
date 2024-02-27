@@ -30,7 +30,7 @@ The parameter grid (or the search space for the models) are as per below:
     'seasonality_mode': ['additive','multiplicative']
 
 The methodology used to determine the most optimal forecast is "backtesting cross-validation with refit", and below representation
-in my opinion does a good job of visualizing the process.
+in my opinion does a great job of visualizing the overall process.
 
 ![image](https://github.com/denizn/time-series-forecaster/assets/35758436/5d10f29f-f2b7-404f-8647-e1dc2ecca6f5)
 (Animation from: https://skforecast.org/0.11.0/user_guides/backtesting)
@@ -40,6 +40,9 @@ in my opinion does a good job of visualizing the process.
 (Plotly animated html files are available under: reports/figure)
 
 # Backtesting cross validation results
-Cross validation results can be under model/results folder in below form:
+Cross validation results can be seen under model/results folder in below form:
 <img width="500" alt="Screenshot 2024-02-26 at 7 40 12 pm" src="https://github.com/denizn/time-series-forecaster/assets/35758436/05f9781a-f974-48f4-8dac-55fe9351ade6">
 
+# In terms of explainability, it's possible to separate components of the forecast such as trend, weekly and yearly seasonality.
+
+<img width="834" alt="Screenshot 2024-02-27 at 3 01 23 am" src="https://github.com/denizn/time-series-forecaster/assets/35758436/cc5dde86-adf2-439e-b6e1-0c51047c7e32">
