@@ -43,6 +43,6 @@ in my opinion does a great job of visualizing the overall process.
 Cross validation results can be seen under model/results folder in below form:
 <img width="500" alt="Screenshot 2024-02-26 at 7 40 12 pm" src="https://github.com/denizn/time-series-forecaster/assets/35758436/05f9781a-f974-48f4-8dac-55fe9351ade6">
 
-# In terms of explainability, it's possible to separate components of the forecast such as trend, weekly and yearly seasonality.
+In terms of explainability, it's possible to separate components of the forecast such as trend, weekly and yearly seasonality.
 
 <img width="834" alt="Screenshot 2024-02-27 at 3 01 23 am" src="https://github.com/denizn/time-series-forecaster/assets/35758436/cc5dde86-adf2-439e-b6e1-0c51047c7e32">
