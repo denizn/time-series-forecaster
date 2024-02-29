@@ -1,0 +1,19 @@
+# Model Pickle files
+*.pkl
+
+# Store orecast graphs saved as html
+*.html
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Byte-compiled / optimized / DLL files
+src/data/__pycache__/
+src/features/__pycache__/
+src/models/__pycache__/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# DS Store
+.DS_Store
