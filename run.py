@@ -3,9 +3,11 @@
 from src.data.make_dataset import make_dataset
 from src.features.build_features import run_pipeline
 from src.models.train_model import mass_forecaster
+from pathlib import Path
 
 
-DATA_FOLDER = "./data"
+ROOT_DIR = Path(".")
+DATA_FOLDER = ROOT_DIR / "data"
 
 # Parameter grid to be used for optimization of models
 # These parameters will be tested for multiple sections of the time series with refitting

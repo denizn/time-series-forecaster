@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 import logging
 import itertools
 import pandas as pd
@@ -10,7 +10,11 @@ import pickle
 logging.getLogger("prophet").setLevel(logging.ERROR)
 logging.getLogger("cmdstanpy").disabled=True
 
-data_folder = '../../data'
+
+MODEL_PATH = Path("./models")
+DATA_PATH = Path("./data")
+REPORT_PATH = Path("./reports")
+
 
 param_grid = {  
     'changepoint_prior_scale': [0.001, 0.01, 0.1, 0.5],
@@ -59,7 +63,7 @@ def time_series_cv(df_train, df_test, param_grid, include_promo, include_holiday
 
     return yhat_train, yhat_test, m_best, tuning_results
 
-def mass_forecaster(param_grid, data_folder='../../data', include_promo=True,include_holiday=True, max_store_count=None):
+def mass_forecaster(param_grid, data_folder, include_promo=True,include_holiday=True, max_store_count=None):
     '''
     Mass forecaster will run the time_series_cv
     across every store in test dataset if no max_store_count is defined
@@ -67,8 +71,8 @@ def mass_forecaster(param_grid, data_folder='../../data', include_promo=True,inc
     n stores.
     '''
 
-    df_train = pd.read_parquet(data_folder+'/processed/df_train.parquet')
-    df_test = pd.read_parquet(data_folder+'/processed/df_test_X.parquet')
+    df_train = pd.read_parquet(data_folder / "processed" / "df_train.parquet")
+    df_test = pd.read_parquet(data_folder / "processed" / "df_test_X.parquet")
 
     stores = df_test.index.levels[0]
 
@@ -80,7 +84,7 @@ def mass_forecaster(param_grid, data_folder='../../data', include_promo=True,inc
         forecast = pd.concat([yhat_train, yhat_test],axis=0)
 
         # Save Best Model
-        with open(f'models/saved_models/{str(store)}.pkl', 'wb') as handle:
+        with (MODEL_PATH / "saved_models" / f"{store}.pkl").open("wb") as handle:
             pickle.dump(m_best, handle)
         
         forecast.insert(0,'store',store)
@@ -94,9 +98,10 @@ def mass_forecaster(param_grid, data_folder='../../data', include_promo=True,inc
         fig.write_html(file='reports/figures/'+str(store)+'.html')
 
     # Save bulks forecasts and model tuning results
-    pd.concat(forecasts).to_csv('models/results/forecasts.csv')
-    pd.concat(tuning_results).to_csv('models/results/tunings_results.csv')
+    pd.concat(forecasts).to_csv(MODEL_PATH / "results" / "forecasts.csv")
+    pd.concat(tuning_results).to_csv(MODEL_PATH / "results" / "tuning_results.csv")
 
 if __name__ == '__main__':
 
-    mass_forecaster(param_grid=param_grid)
+    mass_forecaster(param_grid=param_grid, data_folder=DATA_PATH)
+

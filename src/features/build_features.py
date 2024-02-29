@@ -10,7 +10,7 @@ set_config(transform_output="pandas")
 ## Feature pipeline
 
 
-def run_pipeline(data_folder="../../data"):
+def run_pipeline(data_folder):
 
     numeric_features = []
     numeric_transformer = Pipeline(steps=[("scaler", StandardScaler())])
@@ -36,8 +36,8 @@ def run_pipeline(data_folder="../../data"):
 
     pipeline = Pipeline(steps=[("preprocessor", preprocessor)])
 
-    df_train = pd.read_parquet(data_folder + "/interim/df_train.parquet")
-    df_test = pd.read_parquet(data_folder + "/interim/df_test.parquet")
+    df_train = pd.read_parquet(data_folder / "interim" / "df_train.parquet")
+    df_test = pd.read_parquet(data_folder / "interim" / "df_test.parquet")
 
     df_train_X = pipeline.fit_transform(X=df_train.drop("y", axis=1))
     df_train_y = df_train[["y"]]
@@ -48,8 +48,8 @@ def run_pipeline(data_folder="../../data"):
 
     df_train = pd.concat([df_train_X, df_train_y], axis=1)
 
-    df_train.to_parquet(data_folder + "/processed/df_train.parquet")
-    df_test_X.to_parquet(data_folder + "/processed/df_test_X.parquet")
+    df_train.to_parquet(data_folder / "processed" / "df_train.parquet")
+    df_test_X.to_parquet(data_folder / "processed" / "df_test_X.parquet")
 
     print(f"Feature datasets have been saved!")
 
