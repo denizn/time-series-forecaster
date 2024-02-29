@@ -48,7 +48,7 @@ def time_series_cv(df_train, df_test, param_grid, include_promo, include_holiday
         if include_holiday:
             m.add_regressor('cat__SchoolHoliday_1.0')
 
-        m.fit(df_train.reset_index())  # Fit model with given params
+        m.fit(df_train.reset_index())  # Fit model with initial params
 
         df_cv = cross_validation(m, initial='730 days', period='90 days', horizon = '42 days', disable_tqdm=True)
         df_p = performance_metrics(df_cv, rolling_window=1)
@@ -85,6 +85,7 @@ def mass_forecaster(param_grid, data_folder, include_promo=True,include_holiday=
     tuning_results = []
 
     for store in stores[0:max_store_count] if max_store_count else stores:
+        print(f'Starting forecast sequence for Store:{store}')
         yhat_train, yhat_test, m_best, tuning_result = time_series_cv(df_train.loc[store], df_test.loc[store], param_grid, include_promo, include_holiday)
         forecast = pd.concat([yhat_train, yhat_test],axis=0)
 
