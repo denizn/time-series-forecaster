@@ -21,10 +21,12 @@ def make_dataset(data_folder) -> tuple[pd.DataFrame, : pd.DataFrame]:
         "SchoolHoliday": "Int64",
     }
 
+    # Train dataset is determined by Rossmann as Sales data from Jan 2013 and July 2015
     data_train = pd.read_csv(
         data_folder / "raw" / "train.csv", dtype=dtype, parse_dates=["Date"]
     )
 
+    # Test dataset is determined by Rossman as Sales data from August 2015 and September 2015
     data_test = pd.read_csv(
         data_folder / "raw" / "test.csv", dtype=dtype, parse_dates=["Date"]
     )
@@ -33,7 +35,6 @@ def make_dataset(data_folder) -> tuple[pd.DataFrame, : pd.DataFrame]:
     data_store = pd.read_csv(data_folder / "raw" / "store.csv")
 
     # Dropping fields DayOfWeek (redundant), Customers (not needed), 'Open' filter is not needed as well since we only train and predict open days
-    # Dropping
 
     # Filter necessary fields
 
