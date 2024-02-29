@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from src.data.make_dataset import make_dataset
 from src.features.build_features import run_pipeline
 from src.models.train_model import mass_forecaster
