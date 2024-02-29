@@ -4,6 +4,15 @@ A library to showcase time series analysis and forecasting
 This project and repository aims to showcase a sample time series analysis and forecasting project.
 From a dataset point of view, we will be using Rossmann Retail store dataset from below competition https://www.kaggle.com/competitions/rossmann-store-sales/data.
 
+#### Environment details
+Library has been built using poetry package manager on python 3.12
+poetry.lock and pyproject.toml files include the necessary details on the dev environment
+
+### Installation steps
+1. cd into time-series-forecaster 
+2. pip install poetry
+3. poetry install
+
 There are three main parts of the code base:
 1. data/make_dataset:
 2. feature/run_pipeline
