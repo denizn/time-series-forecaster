@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+
+"""Module that splits train dataset into multiple time series folds, runs prophet algorithm
+using different hyperparameters and returns forecasts using the best performing model"""
+
 from pathlib import Path
 import logging
 import itertools
@@ -45,7 +50,7 @@ def time_series_cv(df_train, df_test, param_grid, include_promo, include_holiday
 
         m.fit(df_train.reset_index())  # Fit model with given params
 
-        df_cv = cross_validation(m, initial='730 days', period='90 days', horizon = '42 days')
+        df_cv = cross_validation(m, initial='730 days', period='90 days', horizon = '42 days', disable_tqdm=True)
         df_p = performance_metrics(df_cv, rolling_window=1)
         rmses.append(df_p['rmse'].values[0])
 
