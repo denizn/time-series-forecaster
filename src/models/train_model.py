@@ -101,7 +101,7 @@ def mass_forecaster(param_grid, data_folder, include_promo=True,include_holiday=
 
         # Save Figures
         fig = plot_plotly(m_best,forecast)
-        fig.write_html(file='reports/figures/'+str(store)+'.html')
+        fig.write_html(file=REPORT_PATH / "figures" / f"{str(store)}.html")
 
     # Save bulks forecasts and model tuning results
     pd.concat(forecasts).to_csv(MODEL_PATH / "results" / "forecasts.csv")
