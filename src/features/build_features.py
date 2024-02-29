@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+
+"""Module that loads interim datasets provided by "make_dataset", creates categorical features and saves "processed" versions"""
+
 from pathlib import Path
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer

@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+
+"""Module that predicts and returns a single store forecast using the best performing model"""
+
 from pathlib import Path
 import pickle
 import argparse

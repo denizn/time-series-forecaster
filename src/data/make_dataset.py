@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+
+"""Module that loads raw train and test Rossmann dataset, filters columns and saves interim datasets"""
+
 from pathlib import Path
 import pandas as pd
 

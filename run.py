@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+"""Module that orchestrates the three parts of the mass forecasting engine"""
+
 from src.data.make_dataset import make_dataset
 from src.features.build_features import run_pipeline
 from src.models.train_model import mass_forecaster
