@@ -1,3 +1,4 @@
+from pathlib import Path
 import pandas as pd
 
 
@@ -61,4 +62,6 @@ def make_dataset(data_folder) -> tuple[pd.DataFrame, : pd.DataFrame]:
 
 if __name__ == "__main__":
 
-    data_train, data_test = make_dataset()
+    DATA_FOLDER = Path(".") / "data"
+
+    data_train, data_test = make_dataset(DATA_FOLDER)

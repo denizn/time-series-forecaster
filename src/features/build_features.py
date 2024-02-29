@@ -1,3 +1,4 @@
+from pathlib import Path
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
@@ -57,4 +58,6 @@ def run_pipeline(data_folder):
 
 
 if __name__ == "__main__":
-    run_pipeline()
+
+    DATA_FOLDER = Path(".") / "data"
+    run_pipeline(DATA_FOLDER)
