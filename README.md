@@ -8,7 +8,7 @@ From a dataset point of view, we will be using Rossmann Retail store dataset fro
 Library has been built using poetry package manager on python 3.12
 poetry.lock and pyproject.toml files include the necessary details on the dev environment
 
-### Installation steps
+#### Installation steps
 1. cd into time-series-forecaster 
 2. pip install poetry
 3. poetry install
