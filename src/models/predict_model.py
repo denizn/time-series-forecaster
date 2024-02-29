@@ -32,13 +32,11 @@ def get_prediction(store_number, only_forecast=True):
         prediction = model.predict(df_test)
 
     fig = plot_components_plotly(model, model.predict(df_test))
-    fig.write_html(MODEL_PATH / "models" / "components" / f"{store_number}.html")
+    fig.write_html(MODEL_PATH / "components" / f"{store_number}.html")
 
     return prediction.set_index("ds")["yhat"] if only_forecast else prediction
 
 
 if __name__ == "__main__":
-    yhat = get_prediction(
-        store_number=args.store_number if args.store_number else 1
-    ).set_index("ds")["yhat"]
+    yhat = get_prediction(store_number=args.store_number if args.store_number else 1)
     print(yhat)
