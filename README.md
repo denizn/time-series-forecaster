@@ -11,24 +11,24 @@ Poetry can be installed using pipx, and it installs the necessary requirements t
 
 #### Installation steps
 On macOS:
-brew install pipx
-pipx ensurepath
-pipx install poetry
-poetry install
+-brew install pipx
+-pipx ensurepath
+-pipx install poetry
+-poetry install
 
 On Linux:
 Ubuntu 23.04 or above
-sudo apt update
-sudo apt install pipx
-pipx ensurepath
-pipx install poetry
-poetry install
+-sudo apt update
+-sudo apt install pipx
+-pipx ensurepath
+-pipx install poetry
+-poetry install
 
 Ubuntu 22.04 or below
-python3 -m pip install --user pipx
-python3 -m pipx ensurepath
-pipx install poetry
-poetry install
+-python3 -m pip install --user pipx
+-python3 -m pipx ensurepath
+-pipx install poetry
+-poetry install
 
 There are three main parts of the code base:
 1. data/make_dataset:
