@@ -11,17 +11,17 @@ Poetry can be installed using pipx, and it installs the necessary requirements t
 
 #### Installation steps
 On macOS:
--brew install pipx
+brew install pipx
 -pipx ensurepath
 -pipx install poetry
 -poetry install
 
 On Linux:
 Ubuntu 23.04 or above
--sudo apt update
--sudo apt install pipx
--pipx ensurepath
--pipx install poetry
+sudo apt update
+sudo apt install pipx
+pipx ensurepath
+pipx install poetry
 -poetry install
 
 Ubuntu 22.04 or below
