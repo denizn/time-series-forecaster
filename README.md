@@ -7,7 +7,7 @@ From a dataset point of view, we will be using Rossmann Retail store dataset fro
 #### Environment details
 Library has been built using poetry package manager on python 3.12.
 Poetry.lock and pyproject.toml files include the necessary details on the dev environment.
-Poetry can be installed using pipx, and it installs the necessary requirements.
+Poetry can be installed using pipx, and it installs the necessary requirements to run the project.
 
 #### Installation steps
 On macOS:
