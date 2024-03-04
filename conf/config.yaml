@@ -1,0 +1,27 @@
+# Data path to load train_dataset and test_dataset
+DATA_PATH: ./data
+
+# Model path to save models, components and results
+MODEL_PATH: ./model
+
+# Reports path to save reports, mainly for html files that show history and forecast for each store
+REPORT_PATH: ./reports
+
+# Max Store Count is used as a limiter for how many stores the mass forecaster will be run
+MAX_STORE_COUNT: 4
+
+# Parameter Grid to use in hyperparameter optimization
+PARAM_GRID:
+  changepoint_prior_scale:
+  - 0.001
+  - 0.01
+  - 0.1
+  - 0.5
+  seasonality_mode:
+  - additive
+  - multiplicative
+  seasonality_prior_scale:
+  - 0.01
+  - 0.1
+  - 1.0
+  - 10.0
