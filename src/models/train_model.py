@@ -68,7 +68,7 @@ def time_series_cv(df_train, df_test, param_grid, include_promo, include_holiday
 
     return yhat_train, yhat_test, m_best, tuning_results
 
-def mass_forecaster(param_grid, data_folder, include_promo=True,include_holiday=True, max_store_count=None):
+def mass_forecaster(param_grid, data_folder, max_store_count=None, include_promo=True,include_holiday=True):
     '''
     Mass forecaster will run the time_series_cv
     across every store in test dataset if no max_store_count is defined
