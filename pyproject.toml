@@ -3,6 +3,7 @@ name = "time-series-forecaster"
 version = "0.1.0"
 description = "A library to showcase time series analysis and forecasting"
 authors = ["Deniz Nuhoglu <dnuhoglu@gmail.com>"]
+packages = [{include = "*", from="src"}]
 readme = "README.md"
 
 [tool.poetry.dependencies]
@@ -12,6 +13,7 @@ plotly = "^5.19.0"
 nbformat = "^5.9.2"
 prophet = "^1.1.5"
 pyarrow = "^15.0.0"
+pandas = "2.1.4"
 scikit-learn = "^1.4.1.post1"
 
 
