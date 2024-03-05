@@ -1,6 +1,6 @@
 FROM python:3.12.2-slim-bookworm
 
-WORKDIR /app
+WORKDIR /
 
 RUN mkdir -p /models/graphs
 RUN mkdir -p /models/components
@@ -11,7 +11,11 @@ COPY requirements.txt requirements.txt
 
 COPY data data
 
+COPY reports reports
+
 COPY src src
+
+COPY conf conf
 
 COPY run.py run.py
 
