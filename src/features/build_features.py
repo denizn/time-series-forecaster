@@ -3,13 +3,12 @@
 """Module that loads interim datasets provided by "make_dataset",
 creates categorical features and saves processed datasets"""
 
-from pathlib import Path
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn import set_config
-
 import pandas as pd
+from config.config import get_config
 
 set_config(transform_output="pandas")
 
@@ -61,12 +60,12 @@ def run_pipeline(data_folder):
     df_train.to_parquet(data_folder / "processed" / "df_train.parquet")
     df_test_X.to_parquet(data_folder / "processed" / "df_test_X.parquet")
 
-    print(f"Feature datasets have been saved!")
+    print("Feature datasets have been saved!")
 
     return df_train, df_test_X
 
 
 if __name__ == "__main__":
 
-    DATA_FOLDER = Path(".") / "data"
-    run_pipeline(DATA_FOLDER)
+    conf = get_config()
+    run_pipeline(conf.DATA_FOLDER)

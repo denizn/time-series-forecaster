@@ -10,7 +10,6 @@ import pandas as pd
 from prophet import Prophet
 from prophet.diagnostics import cross_validation, performance_metrics
 from prophet.plot import plot_plotly, plot_components_plotly
-
 from config.config import get_config
 
 logging.getLogger("prophet").setLevel(logging.ERROR)
