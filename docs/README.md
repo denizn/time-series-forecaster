@@ -64,7 +64,8 @@ Since there are 856 stores currently, to limit runtime I've also added a max sto
 The methodology used to determine the most optimal forecast is "backtesting cross-validation with refit", and below representation
 in my opinion does a great job of visualizing the overall process.
 
-![image](https://github.com/denizn/time-series-forecaster/assets/35758436/5d10f29f-f2b7-404f-8647-e1dc2ecca6f5)
+![refit](https://github.com/denizn/time-series-forecaster/assets/35758436/b437debc-a4c2-41b3-a04b-39ea217ce07f)
+
 (Animation from: https://skforecast.org/0.11.0/user_guides/backtesting)
 
 # Sample history and 42-day forecast can be seen below:
