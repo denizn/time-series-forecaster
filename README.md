@@ -4,12 +4,14 @@ A library to showcase time series analysis and forecasting
 This project and repository aims to showcase a sample time series analysis and forecasting project.
 From a dataset point of view, we will be using Rossmann Retail store dataset from below competition https://www.kaggle.com/competitions/rossmann-store-sales/data.
 
-#### Environment details
-Library has been built using poetry package manager on python 3.12.
-Poetry.lock and pyproject.toml files include the necessary details on the dev environment.
-Poetry can be installed using pipx, and it installs the necessary requirements to run the project.
+#### Environment details and requirements
+- Library has been built using poetry package manager on python 3.12.2
+- Poetry.lock and pyproject.toml files include the necessary details on the dev environment.
+- Poetry can be installed using pipx, and it installs the necessary requirements to run the project.
+- Alternatively, a hashed requirements.txt file has also been provided, which can directly be used via pip package manager on top of the correct python version.
+- A .Dockerfile currently in development is also added for containerization purposes.
 
-#### Installation steps
+#### Installation steps using poetry
 On macOS:
 brew install pipx -> pipx ensurepath -> pipx install poetry -> poetry install
 
