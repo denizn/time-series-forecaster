@@ -54,7 +54,8 @@ After the pipeline is run, a single prediction can be obtained using the below c
 #### Configurations:
 Configuration of the run.py can be set in the conf/config.yaml file.
 Paths for data, models and reports can be set here.
-Since there are 856 stores currently, to limit runtime I've also added max store count parameter.
+Since there are 856 stores currently, to limit runtime I've also added a max store count parameter.
+
 <img width="578" alt="Screenshot 2024-03-05 at 4 20 38 am" src="https://github.com/denizn/time-series-forecaster/assets/35758436/111b4d23-ea56-42a6-bf81-10a4db409115">
 
 The methodology used to determine the most optimal forecast is "backtesting cross-validation with refit", and below representation
