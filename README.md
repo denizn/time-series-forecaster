@@ -45,6 +45,18 @@ The parameter grid (or the search space for the models) are as per below:
     'seasonality_prior_scale': [0.01, 0.1, 1.0, 10.0],
     'seasonality_mode': ['additive','multiplicative']
 
+#### How to:
+A simple python3 run.py command triggers the entire pipeline where forecasts for all stores get generated.
+- python3 run.py
+After the pipeline is run, a single prediction can be obtained using the below command, or results can be viewed under models/results folder.
+- python3 ./src/models/predict_model.py --store_number 3
+
+#### Configurations:
+Configuration of the run.py can be set in the conf/config.yaml file.
+Paths for data, models and reports can be set here.
+Since there are 856 stores currently, to limit runtime I've also added max store count parameter.
+<img width="578" alt="Screenshot 2024-03-05 at 4 20 38 am" src="https://github.com/denizn/time-series-forecaster/assets/35758436/111b4d23-ea56-42a6-bf81-10a4db409115">
+
 The methodology used to determine the most optimal forecast is "backtesting cross-validation with refit", and below representation
 in my opinion does a great job of visualizing the overall process.
 
