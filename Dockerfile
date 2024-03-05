@@ -2,7 +2,7 @@ FROM python:3.12.2-slim-bookworm
 
 WORKDIR /app
 
-RUN mkdir -p /reports/figures
+RUN mkdir -p /models/graphs
 RUN mkdir -p /models/components
 RUN mkdir -p /models/results
 RUN mkdir -p /models/saved_models

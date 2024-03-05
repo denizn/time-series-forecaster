@@ -2,15 +2,26 @@
 DATA_PATH: ./data
 
 # Model path to save models, components and results
-MODEL_PATH: ./model
+MODEL_PATH: ./models
 
 # Reports path to save reports, mainly for html files that show history and forecast for each store
 REPORT_PATH: ./reports
 
 # Max Store Count is used as a limiter for how many stores the mass forecaster will be run
-MAX_STORE_COUNT: 4
+# Defaults to None
+# Set to None to run for all stores or omit (comment out)
+# MAX_STORE_COUNT: 10
+
+# Whether to include promotions in regression
+# Defaults to True
+INCLUDE_PROMO: True
+
+# Whether to include school holidays in regression
+# Defaults to True
+INCLUDE_HOLIDAY: True
 
 # Parameter Grid to use in hyperparameter optimization
+# A default is included in code base
 PARAM_GRID:
   changepoint_prior_scale:
   - 0.001

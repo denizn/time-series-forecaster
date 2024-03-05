@@ -7,9 +7,9 @@ from pathlib import Path
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from sklearn.impute import SimpleImputer
-import pandas as pd
 from sklearn import set_config
+
+import pandas as pd
 
 set_config(transform_output="pandas")
 
