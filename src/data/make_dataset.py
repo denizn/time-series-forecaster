@@ -7,6 +7,9 @@ import pandas as pd
 
 
 def make_dataset(data_folder) -> tuple[pd.DataFrame, : pd.DataFrame]:
+    """
+    Make dataset takes in a data folder and looks for a train.csv and a test.csv file and preprocesses it
+    """
 
     # Set data types for pandas to load csv
     dtype = {

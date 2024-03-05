@@ -17,6 +17,10 @@ set_config(transform_output="pandas")
 
 
 def run_pipeline(data_folder):
+    """Run pipeline module takes in a data folder and looks into the interim folders
+    for df_train and df_test parquet files and builds one hot encoded features out of these
+    then saves them into the processed folder
+    """
 
     numeric_features = []
     numeric_transformer = Pipeline(steps=[("scaler", StandardScaler())])
