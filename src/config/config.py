@@ -2,6 +2,7 @@
 
 from pathlib import Path
 from pydantic import BaseModel, ConfigDict, Field, DirectoryPath
+from typing import Union
 import yaml
 
 # Config file contains the Parameter grid to be used for optimization of models
@@ -27,7 +28,7 @@ class Config(BaseModel):
             "seasonality_mode": ["additive", "multiplicative"],
         }
     )
-    MAX_STORE_COUNT: int = Field(default=None)
+    MAX_STORE_COUNT: Union[None, int] = Field(default=None)
     INCLUDE_PROMO: bool = Field(default=True)
     INCLUDE_HOLIDAY: bool = Field(default=True)
 

@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     parser = ArgumentParser(
         prog="Time Series Forecaster",
-        description="This program creates forecasts for Rossmann",
+        description="This program creates forecasts for each store in Rossmann Store Sales dataset",
     )
     parser.add_argument(
         "--config_file", "-c", required=False, default="./conf/config.yaml"
