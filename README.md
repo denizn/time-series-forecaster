@@ -66,14 +66,18 @@ in my opinion does a great job of visualizing the overall process.
 (Animation from: https://skforecast.org/0.11.0/user_guides/backtesting)
 
 # Sample history and 42-day forecast can be seen below:
-![newplot](https://github.com/denizn/time-series-forecaster/assets/35758436/8d4b592a-a12e-473a-8fd4-2146b0a555bb)
-(Plotly animated html files are available under: reports/figure)
 
-# Components (trend, weekly, yearly seasonality)
+![newplot](https://github.com/denizn/time-series-forecaster/assets/35758436/8d4b592a-a12e-473a-8fd4-2146b0a555bb)
+(Plotly animated html files are available under: models/graphs)
+
+# Components (trend, yearly and weekly seasonality)
+
 In terms of explainability, it's possible to separate components of the forecast such as trend, weekly and yearly seasonality, which is a great benefit of the prophet algorithm. See figure below:
 <img width="837" alt="Screenshot 2024-02-27 at 3 31 27 am" src="https://github.com/denizn/time-series-forecaster/assets/35758436/13255060-82c4-4ec0-9d3d-256edddaec12">
 
 # Backtesting cross validation results
-Cross validation results can be seen under model/results folder in below form:
+
+Cross validation results can be seen for each store under model/results folder in below form:
+
 <img width="500" alt="Screenshot 2024-02-26 at 7 40 12 pm" src="https://github.com/denizn/time-series-forecaster/assets/35758436/05f9781a-f974-48f4-8dac-55fe9351ade6">
 
