@@ -31,6 +31,16 @@ There are three main parts of the code base:
 
 In this part we load the datasets train.csv and test.csv and make some basic transformations necessary for the prophet module
 
+Dataset consists of:
+Train data from Jan 2013 to July 2015 (1115 Stores)
+
+Test dataset from August 2015 to September 2015 (856 Stores)
+
+First 25 store sales annually look like below:
+
+![25stores](https://github.com/denizn/time-series-forecaster/assets/35758436/f4120290-def0-4ecf-afa3-6eaf34d3aa57)
+
+
 #### Part 2: Run pipeline
 
 Here, on top of seasonality and trend, we would like to create features based on whether a store has been in a promotion on the specific date
