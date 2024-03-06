@@ -34,9 +34,6 @@ def make_dataset(data_folder) -> tuple[pd.DataFrame, : pd.DataFrame]:
         data_folder / "raw" / "test.csv", dtype=dtype, parse_dates=["Date"]
     )
 
-    sample_submission = pd.read_csv(data_folder / "raw" / "sample_submission.csv")
-    data_store = pd.read_csv(data_folder / "raw" / "store.csv")
-
     # Dropping fields DayOfWeek (redundant), Customers (not needed), 'Open' filter is not needed as well since we only train and predict open days
 
     # Filter necessary fields
@@ -44,9 +41,9 @@ def make_dataset(data_folder) -> tuple[pd.DataFrame, : pd.DataFrame]:
     data_train = data_train[data_train["Open"] == 1][
         ["Store", "Date", "Promo", "SchoolHoliday", "Sales"]
     ]
-    data_test = data_test[data_test["Open"] == 1][
-        ["Store", "Date", "Promo", "SchoolHoliday"]
-    ]
+
+    # Due to tactical competition reasons, we no longer predict closed days as zero
+    data_test = data_test[["Store", "Date", "Promo", "SchoolHoliday"]]
 
     data_train.rename({"Sales": "y", "Date": "ds"}, axis=1, inplace=True)
     data_test.rename({"Sales": "y", "Date": "ds"}, axis=1, inplace=True)
@@ -63,7 +60,7 @@ def make_dataset(data_folder) -> tuple[pd.DataFrame, : pd.DataFrame]:
     data_train.to_parquet(data_folder / "interim" / "df_train.parquet")
     data_test.to_parquet(data_folder / "interim" / "df_test.parquet")
 
-    print(f"Train and test datasets saved!")
+    print("Train and test datasets saved!")
 
     return data_train, data_test
 
@@ -72,4 +69,4 @@ if __name__ == "__main__":
 
     DATA_FOLDER = Path(".") / "data"
 
-    data_train, data_test = make_dataset(DATA_FOLDER)
+    make_dataset(DATA_FOLDER)

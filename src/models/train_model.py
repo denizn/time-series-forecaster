@@ -10,7 +10,7 @@ import pandas as pd
 from prophet import Prophet
 from prophet.diagnostics import cross_validation, performance_metrics
 from prophet.plot import plot_plotly, plot_components_plotly
-from config.config import get_config
+from src.config.config import get_config
 
 logging.getLogger("prophet").setLevel(logging.ERROR)
 logging.getLogger("cmdstanpy").disabled=True
@@ -35,7 +35,7 @@ def time_series_cv(df_train, df_test, param_grid, include_promo, include_holiday
 
         if include_holiday:
             m.add_regressor('cat__SchoolHoliday_1.0')
-
+            
         m.fit(df_train.reset_index())  # Fit model with initial params
 
         df_cv = cross_validation(m, initial='730 days', period='90 days', horizon = '42 days', disable_tqdm=True)

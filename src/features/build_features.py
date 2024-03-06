@@ -8,7 +8,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn import set_config
 import pandas as pd
-from config.config import get_config
+from src.config.config import get_config
 
 set_config(transform_output="pandas")
 
