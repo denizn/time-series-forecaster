@@ -27,6 +27,20 @@ There are three main parts of the code base:
 2. feature/run_pipeline
 3. models/mass_forecaster
 
+#### How to:
+A simple python3 run.py command triggers the entire pipeline where forecasts for all stores get generated.
+- python3 run.py
+
+After the pipeline is run, a single prediction can be obtained using the below command, or results can be viewed under models/results folder.
+- python3 ./src/models/predict_model.py --store_number 3
+
+#### Configurations:
+Configuration of the run.py can be set in the conf/config.yaml file.
+Paths for data, models and reports can be set here.
+Since there are 856 stores currently, to limit runtime I've also added a max store count parameter. Sample config file can be seen below.
+
+<img width="578" alt="Screenshot 2024-03-05 at 4 20 38 am" src="https://github.com/denizn/time-series-forecaster/assets/35758436/111b4d23-ea56-42a6-bf81-10a4db409115">
+
 #### Part 1: Make dataset
 
 In this part we load the datasets train.csv and test.csv and make some basic transformations necessary for the prophet module
@@ -57,19 +71,7 @@ The parameter grid (or the search space for the models) are as per below:
     'seasonality_prior_scale': [0.01, 0.1, 1.0, 10.0],
     'seasonality_mode': ['additive','multiplicative']
 
-#### How to:
-A simple python3 run.py command triggers the entire pipeline where forecasts for all stores get generated.
-- python3 run.py
-
-After the pipeline is run, a single prediction can be obtained using the below command, or results can be viewed under models/results folder.
-- python3 ./src/models/predict_model.py --store_number 3
-
-#### Configurations:
-Configuration of the run.py can be set in the conf/config.yaml file.
-Paths for data, models and reports can be set here.
-Since there are 856 stores currently, to limit runtime I've also added a max store count parameter. Sample config file can be seen below.
-
-<img width="578" alt="Screenshot 2024-03-05 at 4 20 38 am" src="https://github.com/denizn/time-series-forecaster/assets/35758436/111b4d23-ea56-42a6-bf81-10a4db409115">
+#### Cross-validation & Grid Search methodology
 
 The methodology used to determine the most optimal forecast is "backtesting cross-validation with refit", and below representation
 in my opinion does a great job of visualizing the overall process.
@@ -78,7 +80,7 @@ in my opinion does a great job of visualizing the overall process.
 
 (Animation from: https://skforecast.org/0.11.0/user_guides/backtesting)
 
-# Sample history and 42-day forecast can be seen below:
+# Sample history and 42-day forecast
 
 ![newplot](https://github.com/denizn/time-series-forecaster/assets/35758436/8d4b592a-a12e-473a-8fd4-2146b0a555bb)
 (Plotly animated html files are available under: models/graphs)
