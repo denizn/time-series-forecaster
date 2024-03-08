@@ -83,6 +83,7 @@ in my opinion does a great job of visualizing the overall process.
 # Sample history and 42-day forecast
 
 ![newplot](https://github.com/denizn/time-series-forecaster/assets/35758436/8d4b592a-a12e-473a-8fd4-2146b0a555bb)
+
 (Plotly animated html files are available under: models/graphs)
 
 # Components (trend, yearly and weekly seasonality)
